@@ -11,7 +11,8 @@ export const getUserToken = async ({ address, chainType, signature }: Args) => {
     const response = await fetch(baseUrl, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'nb-business-id': '240053',
         },
         body: JSON.stringify({
             address,
