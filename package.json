@@ -1,5 +1,5 @@
 {
-  "name": "login-with-wagmi",
+  "name": "signin-with-wagmi",
   "version": "0.1.0",
   "private": true,
   "scripts": {
