@@ -19,7 +19,9 @@ export const metamaskAuthFlow: AuthenticationAdapter = {
     },
     verifySignature: async ({ address, signature }) => {
       const userToken = await getUserToken({ address, chainType: 'ETHEREUM', signature }); // metamask 都是 ethereum
-      return userToken.success;
+      // TODO: 儲存 userToken
+      console.log(userToken)
+      return userToken.data.isSuccess;
     },
     signOut: async () => {
       // TODO: Implement sign out
