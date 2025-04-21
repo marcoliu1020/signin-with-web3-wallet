@@ -1,11 +1,11 @@
 import { ChainType } from "./type";
 
-export type GetNonceParams = {
+export type Args = {
     address: string;
     chainType: ChainType
 }
 
-export const getNonce = async ({ address, chainType }: GetNonceParams): Promise<string> => {
+export const getNonce = async ({ address, chainType }: Args): Promise<string> => {
     const baseUrl = "https://xc-gateway-staging.jklkjnqscc.com/xc-member/v1/member/register/challenge"
     const searchParams = new URLSearchParams({ address, chainType });
     const response = await fetch(`${baseUrl}?${searchParams.toString()}`);

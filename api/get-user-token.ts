@@ -1,12 +1,12 @@
 import { ChainType } from "./type";
 
-export type GetUserTokenParams = {
+export type Args = {
     address: string;
     chainType: ChainType;
     signature: string;
 }
 
-export const getUserToken = async ({ address, chainType, signature }: GetUserTokenParams) => {
+export const getUserToken = async ({ address, chainType, signature }: Args) => {
     const baseUrl = "https://xc-gateway-staging.jklkjnqscc.com/xc-member/v1/member/register/wallet"
     const response = await fetch(baseUrl, {
         method: 'POST',
