@@ -4,7 +4,7 @@ import { useAccount, useDisconnect } from 'wagmi'
 
 // context
 import { signInPipeWork } from '@/context/signin-pipe-work'
-import { metamaskAuthFlow } from '@/context/wagmi/metamask-auth-flow'
+import { evmAuthFlow } from '@/context/wagmi/evm-auth-flow'
 
 export function Account() {
   const { address, chainId } = useAccount()
@@ -15,7 +15,7 @@ export function Account() {
       throw new Error('Address or chainId is not set')
     }
     const signInFlow = signInPipeWork(address, chainId)
-    const result = await signInFlow(metamaskAuthFlow)
+    const result = await signInFlow(evmAuthFlow)
     console.log(result)
   }
 
