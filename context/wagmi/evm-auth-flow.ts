@@ -14,6 +14,7 @@ export const evmAuthFlow: AuthenticationAdapter = {
       return nonce;
     },
     createSignature: async ({ nonce }) => {
+      // 可以用這個網站測試 https://etherscan.io/verifiedSignatures#
       const signature = await signMessage(config, { message: nonce });
       return signature;
     },
