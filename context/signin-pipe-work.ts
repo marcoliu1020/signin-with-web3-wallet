@@ -1,20 +1,15 @@
-type GetNonce = (args: { address: string; chainId: number; }) => Promise<string>;
-type CreateSignature = (args: { nonce: string; address: string; chainId: number; }) => Promise<string>;
-type VerifySignature = (args: { address: string; chainId: number; signature: string; }) => Promise<boolean>;
-type SignOut = () => Promise<void>;
-
 /**
  * 認證適配器
  */
 export interface AuthenticationAdapter {
     /** 取得 nonce */
-    getNonce: GetNonce;
+    getNonce: (args: { address: string; chainId: number; }) => Promise<string>;
     /** 建立簽名 */
-    createSignature: CreateSignature;
+    createSignature: (args: { nonce: string; address: string; chainId: number; }) => Promise<string>;
     /** 驗證簽名 */
-    verifySignature: VerifySignature;
+    verifySignature: (args: { signature: string; address: string; chainId: number; }) => Promise<boolean>;
     /** 登出 */
-    signOut: SignOut;
+    signOut: () => Promise<void>;
 }
 
 /**
