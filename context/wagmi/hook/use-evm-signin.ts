@@ -3,7 +3,7 @@ import { useAccount } from "wagmi"
 
 // signin-pipe-work
 import { signInPipeWork } from '@/context/signin-pipe-work'
-import { evmAuthFlow } from '@/context/wagmi/evm-auth-flow'
+import { evmAuthAdapter } from '@/context/wagmi/evm-auth-flow'
 
 export function useEvmSignin() {
     const { address, chainId } = useAccount()
@@ -16,7 +16,7 @@ export function useEvmSignin() {
         try {
             setAuthStatus('loading')
             const signInFlow = signInPipeWork(address, chainId)
-            const result = await signInFlow(evmAuthFlow)
+            const result = await signInFlow(evmAuthAdapter)
             if (!result.success) {
                 throw new Error('Sign in failed')
             }

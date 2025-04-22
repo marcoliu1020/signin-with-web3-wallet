@@ -11,7 +11,7 @@ import { setUserToken } from '@/util/user-token';
 // type
 import type { AuthenticationAdapter } from "../signin-pipe-work";
 
-export const evmAuthFlow: AuthenticationAdapter = {
+export const evmAuthAdapter: AuthenticationAdapter = {
     getNonce: async ({ address }) => {
       const nonce = await getNonce({ address, chainType: 'ETHEREUM' }); // metamask 都是 ethereum
       return nonce;
