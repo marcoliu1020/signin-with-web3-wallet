@@ -3,7 +3,7 @@ import { useAccount } from "wagmi"
 
 // signin-pipe-work
 import { signInPipeWork } from '@/context/signin-pipe-work'
-import { evmAuthAdapter } from '@/context/wagmi/evm-auth-flow'
+import { evmAuthAdapter } from '@/context/wagmi/evm-auth-adapter'
 
 export function useEvmSignin() {
     const { address, chainId } = useAccount()
