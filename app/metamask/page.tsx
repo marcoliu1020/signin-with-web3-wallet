@@ -4,11 +4,11 @@ import { useEffect } from 'react'
 import { useAccount } from 'wagmi'
 
 // component
-import { Account } from '@/context/wagmi/component/account'
-import { WalletOptions } from '@/context/wagmi/component/wallet-options'
+import { Account } from '@/context/evm/component/account'
+import { WalletOptions } from '@/context/evm/component/wallet-options'
 
 // hook
-import { useEvmSignin } from '@/context/wagmi/hook/use-evm-signin'
+import { useEvmSignin } from '@/context/evm/hook/use-evm-signin'
 
 // util
 import { getUserToken } from '@/util/user-token'
