@@ -11,13 +11,17 @@ export function WalletOptions() {
     (connector) => connector.type === 'metaMask' || connector.type === 'walletConnect'
   )
 
-  return filteredConnectors.map((connector) => (
-    <WalletOption
-      key={connector.uid}
-      connector={connector}
-      onClick={() => connect({ connector })}
-    />
-  ))
+  return (
+    <div className='flex flex-col gap-4'>
+      {filteredConnectors.map((connector) => (
+        <WalletOption
+          key={connector.uid}
+          connector={connector}
+          onClick={() => connect({ connector })}
+        />
+      ))}
+    </div>
+  )
 }
 
 function WalletOption({
@@ -37,7 +41,7 @@ function WalletOption({
   }, [connector])
 
   return (
-    <button disabled={!ready} onClick={onClick}>
+    <button disabled={!ready} onClick={onClick} className='border border-gray-300 rounded-md p-2'>
       {connector.name}
     </button>
   )
