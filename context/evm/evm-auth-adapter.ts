@@ -9,7 +9,7 @@ import { getUserToken } from '@/api/get-user-token';
 import { setUserToken } from '@/util/user-token';
 
 // type
-import type { AuthenticationAdapter } from "../signin-pipe-work";
+import type { AuthenticationAdapter } from "@/context/signin-pipe-work";
 
 export const evmAuthAdapter: AuthenticationAdapter = {
     getNonce: async ({ address }) => {
