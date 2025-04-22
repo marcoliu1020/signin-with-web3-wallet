@@ -5,6 +5,9 @@ import { config } from './config';
 import { getNonce } from '@/api/get-nonce';
 import { getUserToken } from '@/api/get-user-token';
 
+// util
+import { setUserToken } from '@/util/user-token';
+
 // type
 import type { AuthenticationAdapter } from "../signin-pipe-work";
 
@@ -20,9 +23,10 @@ export const evmAuthFlow: AuthenticationAdapter = {
     },
     verifySignature: async ({ address, signature }) => {
       const userToken = await getUserToken({ address, chainType: 'ETHEREUM', signature }); // metamask 都是 ethereum
-      // TODO: 儲存 userToken
-      sessionStorage.setItem('userToken', userToken.data.token)
-      console.log('userToken', userToken)
+      if (userToken.data.isSuccess) {
+        // TODO: 儲存 userToken
+        setUserToken(userToken.data.token)
+      }
       return userToken.data.isSuccess;
     },
     signOut: async () => {
