@@ -16,7 +16,11 @@ export function Account() {
     }
     const signInFlow = signInPipeWork(address, chainId)
     const result = await signInFlow(evmAuthFlow)
-    console.log(result)
+    if (result.success) {
+      alert('sign in success')
+    } else {
+      alert('sign in failed')
+    }
   }
 
   return (
