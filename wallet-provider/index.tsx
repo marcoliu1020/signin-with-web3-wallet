@@ -3,11 +3,11 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // evm
-import { EVMContextProvider } from "./evm";
+import { EVMContextProvider } from "./ethereum";
 
 const queryClient = new QueryClient()
 
-export function ContextProvider({ children }: { children: React.ReactNode }) {
+export function WalletProvider({ children }: { children: React.ReactNode }) {
   return (
     <EVMContextProvider>
       <QueryClientProvider client={queryClient}>
