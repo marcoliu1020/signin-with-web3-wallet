@@ -1,6 +1,6 @@
 'use client'
 
-import { TronConnectButton } from '@/wallet-provider/tron/components/connect-button'
+import { TronConnectButton } from '@/wallet-provider/tron/components/tron-connect-button'
 
 export default function TronPage() {
     return (
