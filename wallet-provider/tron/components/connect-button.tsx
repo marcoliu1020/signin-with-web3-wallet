@@ -1,6 +1,6 @@
 'use client'
 
-import { useTronWallet } from './index'
+import { useTronWallet } from '../index'
 
 export function TronConnectButton() {
     const {
