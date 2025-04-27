@@ -2,17 +2,22 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-// evm
+// ethereum
 import { EthereumContextProvider } from "./ethereum";
+
+// tron
+import { TronContextProvider } from "./tron";
 
 const queryClient = new QueryClient()
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   return (
-    <EthereumContextProvider>
-      <QueryClientProvider client={queryClient}>
-        {children}
-      </QueryClientProvider>
-    </EthereumContextProvider>
+    <TronContextProvider>
+      <EthereumContextProvider>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </EthereumContextProvider>
+    </TronContextProvider>
   )
 }
