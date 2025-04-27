@@ -13,14 +13,14 @@ const queryClient = new QueryClient()
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   return (
-    <TronContextProvider>
-      <EthereumContextProvider>
-        <SolanaContextProvider>
-          <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <TronContextProvider>
+        <EthereumContextProvider>
+          <SolanaContextProvider>
             {children}
-          </QueryClientProvider>
-        </SolanaContextProvider>
-      </EthereumContextProvider>
-    </TronContextProvider>
+          </SolanaContextProvider>
+        </EthereumContextProvider>
+      </TronContextProvider>
+    </QueryClientProvider>
   )
 }
