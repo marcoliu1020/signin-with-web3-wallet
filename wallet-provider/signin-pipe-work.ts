@@ -33,7 +33,7 @@ export const signInPipeWork =
             const signature = await adapter.createSignature({ nonce, address, chainId });
             const hasVerified = await adapter.verifySignature({ signature, address, chainId });
             if (!hasVerified)
-                return { error: "Signature verification failed", success: false };
+                return { error: `Signature verification failed, address: ${address}, chainId: ${chainId}`, success: false };
             return { error: "", success: true, signOut: adapter.signOut };
         }
 
@@ -52,12 +52,12 @@ export const initAdapter: AuthenticationAdapter = {
     },
     verifySignature: async ({ address, signature, chainId }) => {
         const chainType = getChainType(chainId)
-        const userToken = await getUserToken({ address, chainType, signature });
-        if (userToken.data.isSuccess) {
+        const { data } = await getUserToken({ address, chainType, signature });
+        if (data.isSuccess) {
             // TODO: 請實作儲存 userToken
-            setUserToken(userToken.data.token)
+            setUserToken(data.token)
         }
-        return userToken.data.isSuccess;
+        return data.isSuccess;
     },
     signOut: async () => {
         // TODO: 請實作登出
