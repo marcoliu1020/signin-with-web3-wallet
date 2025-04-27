@@ -82,9 +82,9 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
      * Sign In Backend and get userToken
      */
     const signInBackend = async () => {
-        if (authStatus === 'pending') throw new Error('Pending')
-        if (authStatus === 'authenticated') throw new Error('Already authenticated')
-        if (!address) throw new Error('Address is not set')
+        if (authStatus === 'pending') throw new Error('Tron wallet: Pending')
+        if (authStatus === 'authenticated') throw new Error('Tron wallet: Already authenticated')
+        if (!address) throw new Error('Tron wallet: Address is not set')
 
         /** tron 錢包認證適配器 */
         const tronAuthAdapter: AuthenticationAdapter = {
