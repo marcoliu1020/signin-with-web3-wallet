@@ -26,12 +26,17 @@ export function useEthereumWallet() {
 
 function EthereumProvider({ children }: { children: React.ReactNode }) {
     const { address = "", isConnected } = useAccount();
-    const { disconnect } = useDisconnect();
+    const { disconnect: disconnectWagmi } = useDisconnect();
     const { signMessageAsync } = useSignMessage();
     const [authStatus, setAuthStatus] = useState<WalletAuthStatus>('unauthenticated');
 
+    /**
+     * Connect
+     */
     const connect = async () => {
         // ⚠️⚠️⚠️
+        // DO NOT IMPLEMENT THIS FUNCTION
+
         // 請使用 import { Connector, useConnect } from 'wagmi'
         // const { connectors } = useConnect()
         // const metaMaskConnector = connectors.find(connector => connector.type === 'metaMask')
@@ -44,6 +49,13 @@ function EthereumProvider({ children }: { children: React.ReactNode }) {
         // </button>
         return address || "";
     }
+
+    /**
+     * Disconnect
+     */
+    const disconnect = () => {
+        disconnectWagmi()
+    };
 
     /**
      * Sign Message
