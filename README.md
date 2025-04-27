@@ -22,7 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Connect with Solana wallet
 
-[source](https://solana.com/developers/guides/wallets/add-solana-wallet-adapter-to-nextjs)
+[source](https://docs.phantom.com/solana/detecting-the-provider)
 
 ## Connect with Tron wallet
 
