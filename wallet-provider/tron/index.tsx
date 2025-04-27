@@ -58,6 +58,7 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
         // TODO: 沒有找到實際斷開的 API
         setAddress(null);
         setIsConnected(false);
+        setAuthStatus('unauthenticated');
     };
 
     /**
@@ -81,7 +82,8 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
      * Sign In Backend and get userToken
      */
     const signInBackend = async () => {
-        if (authStatus === 'authenticated' || authStatus === 'pending') return false
+        if (authStatus === 'pending') throw new Error('Pending')
+        if (authStatus === 'authenticated') throw new Error('Already authenticated')
         if (!address) throw new Error('Address is not set')
 
         /** tron 錢包認證適配器 */
