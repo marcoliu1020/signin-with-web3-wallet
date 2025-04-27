@@ -3,7 +3,14 @@
 import { useTronWallet } from './index'
 
 export function TronConnectButton() {
-    const { address, isConnected, connect, disconnect, signInBackend } = useTronWallet()
+    const {
+        authStatus,
+        address,
+        isConnected,
+        connect,
+        disconnect,
+        signInBackend
+    } = useTronWallet()
 
     const handleWalletConnect = async () => {
         try {
@@ -52,12 +59,12 @@ export function TronConnectButton() {
                 >
                     Disconnect
                 </button>
-                <button
+                {authStatus === 'unauthenticated' && <button
                     onClick={handleSignInBackend}
                     className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
                 >
                     Sign In Backend
-                </button>
+                </button>}
             </div>
         </div>
     )
