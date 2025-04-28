@@ -8,7 +8,7 @@ import { PhantomProvider } from '../types';
  * @param   {String}          message  a message to sign
  * @returns {Promise<string>}          The signature in base58 format
  */
-const signMessage = async (provider: PhantomProvider, message: string): Promise<string> => {
+const signMessageWithSolana = async (provider: PhantomProvider, message: string): Promise<string> => {
     const encodedMessage = new TextEncoder().encode(message);
     const signedMessage = await provider.signMessage(encodedMessage);
 
@@ -21,4 +21,4 @@ const signMessage = async (provider: PhantomProvider, message: string): Promise<
     return signatureString;
 };
 
-export default signMessage;
+export default signMessageWithSolana;

@@ -17,7 +17,7 @@ export function WalletOptions() {
   )
 }
 
-function MetaMaskButton({ connector }: { connector: Connector }) {
+export function MetaMaskButton({ connector }: { connector: Connector }) {
   const [ready, setReady] = useState(false)
   const { connect } = useConnect()
 
@@ -39,7 +39,7 @@ function MetaMaskButton({ connector }: { connector: Connector }) {
   )
 }
 
-function WalletConnectButton({ connector }: { connector: Connector }) {
+export function WalletConnectButton({ connector }: { connector: Connector }) {
   const [ready, setReady] = useState(false)
   const { connect } = useConnect()
 

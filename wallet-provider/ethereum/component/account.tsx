@@ -2,14 +2,14 @@
 
 import { useAccount } from 'wagmi'
 
-import { useEthereumWallet } from '../hook/use-ethereum-wallet'
+import { useEthereumWallet } from '@/wallet-provider/ethereum'
 
 export function Account() {
   const { address } = useAccount()
-  const { handleSignInBackend } = useEthereumWallet()
+  const { signInBackend } = useEthereumWallet()
 
   const handleSignIn = async () => {
-    const result = await handleSignInBackend()
+    const result = await signInBackend()
     if (result) {
       alert('sign in success ✅')
     }
