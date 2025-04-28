@@ -110,10 +110,10 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
 
     useEffect(() => {
         // Check if already connected
-        if (window.tronWeb && window.tronWeb.ready) {
-          setAddress(window.tronWeb.defaultAddress.base58);
-          setIsConnected(true);
-        }
+        // if (window.tronWeb && window.tronWeb.ready) {
+        //   setAddress(window.tronWeb.defaultAddress.base58);
+        //   setIsConnected(true);
+        // }
 
         // Listen for account changes
         window.addEventListener('message', handleAccountChange);
