@@ -21,7 +21,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 流程：
 1. 取得隨機數
 
-    curl --location 'https://xc-gateway-staging.jklkjnqscc.com/xc-member/v1/member/register/challenge?address=0x3613c05d595de8632335812cf1b398ebca98d3f5&chainType=ETHEREUM'
+    curl --location 'https://xc-gateway-staging.jklkjnqscc.com/xc-member/v1/member/register/challenge?address=Av2vyfdrLdRe2ZaGL5j3qnNXRfYKyVK4dHtqubMHgwK8&chainType=SOLANA'
 
 2. 驗證簽名取得 token (signature 各個錢包簽名會些許不同)
 
@@ -29,10 +29,14 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 --header 'Content-Type: application/json' \
 --header 'nb-business-id: 240053' \
 --data '{
-    "address": "0x3613c05d595de8632335812cf1b398ebca98d3f5",
-    "chainType": "ETHEREUM",
-    "signature": "0xcdab4edddf23ddbc0e873e2c65ec7493e8c96c7762e9808487a798db4a74c09306d5f44b0b43c67cd8e348bb2f1da4eff1728315c8dc6107a9d5cec90e6e6ee91c"
+    "address": "Av2vyfdrLdRe2ZaGL5j3qnNXRfYKyVK4dHtqubMHgwK8",
+    "chainType": "SOLANA",
+    "signature": "5A9ytrU7QZTw6JGYjWNhUqZgHmAaSbG8JeCKihyZdAtPFLD7nfGSydRzjLFSfhfq2aHUN26Za44ccvCjHGDLzSPo"
 }'
+
+簽名測試
+- solana: https://solscan.io/verifiedsignatures
+- ethereum: https://etherscan.io/verifiedsignatures#
 
 ## Connet with Ethereum wallet
 
