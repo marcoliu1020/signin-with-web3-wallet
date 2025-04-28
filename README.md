@@ -14,17 +14,43 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## 使用 web3 錢包登入流程
+
+[後端文件](https://ica-gov-tw.sg.larksuite.com/wiki/HURTwoLYKiuDfPkYM5dly2DPgBb?from=from_copylink)
+
+流程：
+1. 取得隨機數
+
+    curl --location 'https://xc-gateway-staging.jklkjnqscc.com/xc-member/v1/member/register/challenge?address=0x3613c05d595de8632335812cf1b398ebca98d3f5&chainType=ETHEREUM'
+
+2. 驗證簽名取得 token (signature 各個錢包簽名會些許不同)
+
+    curl --location 'https://xc-gateway-staging.jklkjnqscc.com/xc-member/v1/member/register/wallet' \
+--header 'Content-Type: application/json' \
+--header 'nb-business-id: 240053' \
+--data '{
+    "address": "0x3613c05d595de8632335812cf1b398ebca98d3f5",
+    "chainType": "ETHEREUM",
+    "signature": "0xcdab4edddf23ddbc0e873e2c65ec7493e8c96c7762e9808487a798db4a74c09306d5f44b0b43c67cd8e348bb2f1da4eff1728315c8dc6107a9d5cec90e6e6ee91c"
+}'
+
 ## Connet with Ethereum wallet
 
 [source](https://wagmi.sh/react/getting-started)
+
+使用 wagmi 整合所有 Ethereum 錢包
 
 ## Connect with Solana wallet
 
 [source](https://docs.phantom.com/solana/detecting-the-provider)
 
+直接使用瀏覽器的注入錢包
+
 ## Connect with Tron wallet
 
 [source](https://docs-zh.tronlink.org/)
+
+直接使用瀏覽器的注入錢包
 
 ## Learn More
 
