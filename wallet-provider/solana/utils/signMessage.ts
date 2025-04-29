@@ -13,7 +13,7 @@ const signMessageWithSolana = async (provider: PhantomProvider, message: string)
     const signedMessage = await provider.signMessage(encodedMessage);
 
     // Handle the signature data properly
-    const signatureByteArray = signedMessage.signature?.data || signedMessage.signature;
+    const signatureByteArray = signedMessage.signature;
     if (!signatureByteArray) throw new Error('No signature data received');
     
     // Convert byte array to base58
