@@ -109,22 +109,25 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
     }
 
     useEffect(() => {
+        // TODO:update authStatus when user has sign in backend
+        // ...
+
         // Check if already connected
         // if (window.tronWeb && window.tronWeb.ready) {
         //   setAddress(window.tronWeb.defaultAddress.base58);
         //   setIsConnected(true);
         // }
 
-        // Listen for account changes
-        window.addEventListener('message', handleAccountChange);
-        return () => window.removeEventListener('message', handleAccountChange);
+        // // Listen for account changes
+        // window.addEventListener('message', handleAccountChange);
+        // return () => window.removeEventListener('message', handleAccountChange);
 
-        function handleAccountChange(event: MessageEvent) {
-            if (event.data.message && event.data.message.action === 'accountsChanged') {
-                // 換錢包需要重新登入
-                disconnect();
-            }
-        };
+        // function handleAccountChange(event: MessageEvent) {
+        //     if (event.data.message && event.data.message.action === 'accountsChanged') {
+        //         // 換錢包需要重新登入
+        //         disconnect();
+        //     }
+        // };
     }, []);
 
     return (

@@ -107,23 +107,26 @@ export function SolanaContextProvider({ children }: { children: React.ReactNode 
     };
 
     useEffect(() => {
-        const provider = getProvider();
-        if (!provider) throw new Error('Solana provider not found');
+        // TODO:update authStatus when user has sign in backend
+        // ...
 
-        // 當用戶切換錢包時
-        provider.on('accountChanged', () => {
-            // WARNING: solana 錢包切換帳號沒有反應，只有斷開連線 accountChanged 才會觸發
-            console.log('solana accountChanged')
-            disconnect()
-        });
+        // const provider = getProvider();
+        // if (!provider) throw new Error('Solana provider not found');
+
+        // // 當用戶切換錢包時
+        // provider.on('accountChanged', () => {
+        //     // WARNING: solana 錢包切換帳號沒有反應，只有斷開連線 accountChanged 才會觸發
+        //     console.log('solana accountChanged')
+        //     disconnect()
+        // });
         
-        // 當用戶斷開錢包時
-        provider.on("disconnect", () => {
-            console.log('solana disconnect')
-            disconnect()
-        });
+        // // 當用戶斷開錢包時
+        // provider.on("disconnect", () => {
+        //     console.log('solana disconnect')
+        //     disconnect()
+        // });
 
-        return () => provider.removeAllListeners();
+        // return () => provider.removeAllListeners();
     }, []);
 
     return (

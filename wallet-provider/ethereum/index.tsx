@@ -101,13 +101,16 @@ function EthereumProvider({ children }: { children: React.ReactNode }) {
     };
 
     useEffect(() => {
-        const unwatch = watchAccount(config, {
-            onChange(account) { 
-                // WARNING: wagmi 錢包切換帳號沒有反應，只有斷開連線 accountChanged 才會觸發
-                console.log('Account changed!', account)
-            },
-        })
-        return () => unwatch()
+        // TODO:update authStatus when user has sign in backend
+        // ...
+
+        // const unwatch = watchAccount(config, {
+        //     onChange(account) { 
+        //         // WARNING: wagmi 錢包切換帳號沒有反應，只有斷開連線 accountChanged 才會觸發
+        //         console.log('Account changed!', account)
+        //     },
+        // })
+        // return () => unwatch()
     }, [])
 
     return (
