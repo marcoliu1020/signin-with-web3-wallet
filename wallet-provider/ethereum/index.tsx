@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { WagmiProvider, useAccount, useDisconnect, useSignMessage } from 'wagmi';
-import { watchAccount } from '@wagmi/core'
+// import { watchAccount } from '@wagmi/core'
 import { config } from "./config";
 
 // signin-pipe-work
