@@ -73,10 +73,10 @@ function EthereumProvider({ children }: { children: React.ReactNode }) {
     /**
      * Sign In Backend and get userToken
      */
-    const signInBackend = async () => {
+    const signInBackend = async (currentAddress: string) => {
         if (authStatus === 'pending') throw new Error('Ethereum wallet: Pending');
         if (authStatus === 'authenticated') throw new Error('Ethereum wallet: Already authenticated');
-        if (!address) throw new Error('Ethereum wallet: Address is not set');
+        if (!currentAddress) throw new Error('Ethereum wallet: Address is not set');
 
         /** ethereum 錢包認證適配器 */
         const ethereumAuthAdapter: AuthenticationAdapter = {
@@ -89,7 +89,7 @@ function EthereumProvider({ children }: { children: React.ReactNode }) {
 
         try {
             setAuthStatus('pending');
-            const signInFlow = signInPipeWork(address, CHAIN_ID.ETHEREUM);
+            const signInFlow = signInPipeWork(currentAddress, CHAIN_ID.ETHEREUM);
             const result = await signInFlow(ethereumAuthAdapter);
             if (result.error) throw new Error(result.error);
             setAuthStatus('authenticated');

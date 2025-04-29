@@ -9,7 +9,12 @@ export function Account() {
   const { signInBackend } = useEthereumWallet()
 
   const handleSignIn = async () => {
-    const result = await signInBackend()
+    if (!address) {
+      alert('Please connect your wallet first')
+      return
+    }
+
+    const result = await signInBackend(address)
     if (result) {
       alert('sign in success ✅')
     }

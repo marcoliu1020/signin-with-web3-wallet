@@ -65,7 +65,7 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
      * Sign Message
      */
     const signMessage = async (message: string) => {
-        if (!window.tronWeb || !address) {
+        if (!window.tronWeb) {
             throw new Error('Wallet not connected');
         }
 
@@ -81,10 +81,10 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
     /**
      * Sign In Backend and get userToken
      */
-    const signInBackend = async () => {
+    const signInBackend = async (currentAddress: string) => {
         if (authStatus === 'pending') throw new Error('Tron wallet: Pending')
         if (authStatus === 'authenticated') throw new Error('Tron wallet: Already authenticated')
-        if (!address) throw new Error('Tron wallet: Address is not set')
+        if (!currentAddress) throw new Error('Tron wallet: Address is not set')
 
         /** tron 錢包認證適配器 */
         const tronAuthAdapter: AuthenticationAdapter = {
@@ -97,7 +97,7 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
 
         try {
             setAuthStatus('pending');
-            const signInFlow = signInPipeWork(address, CHAIN_ID.TRON)
+            const signInFlow = signInPipeWork(currentAddress, CHAIN_ID.TRON)
             const result = await signInFlow(tronAuthAdapter)
             if (result.error) throw new Error(result.error)
             setAuthStatus('authenticated');

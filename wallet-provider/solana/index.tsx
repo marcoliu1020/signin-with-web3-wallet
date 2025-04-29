@@ -79,10 +79,10 @@ export function SolanaContextProvider({ children }: { children: React.ReactNode 
     /**
      * Sign In Backend and get userToken
      */
-    const signInBackend = async () => {
+    const signInBackend = async (currentAddress: string) => {
         if (authStatus === 'pending') throw new Error('Solana wallet: Pending');
         if (authStatus === 'authenticated') throw new Error('Solana wallet: Already authenticated');
-        if (!address) throw new Error('Solana wallet: Address is not set');
+        if (!currentAddress) throw new Error('Solana wallet: Address is not set');
 
         /** solana 錢包認證適配器 */
         const solanaAuthAdapter: AuthenticationAdapter = {
@@ -95,7 +95,7 @@ export function SolanaContextProvider({ children }: { children: React.ReactNode 
 
         try {
             setAuthStatus('pending');
-            const signInFlow = signInPipeWork(address, CHAIN_ID.SOLANA);
+            const signInFlow = signInPipeWork(currentAddress, CHAIN_ID.SOLANA);
             const result = await signInFlow(solanaAuthAdapter);
             if (result.error) throw new Error(result.error);
             setAuthStatus('authenticated');

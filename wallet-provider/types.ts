@@ -10,7 +10,7 @@ export type WalletContext = {
     connect: () => Promise<string>;
     disconnect: () => void;
     signMessage: (message: string) => Promise<string>;
-    signInBackend: () => Promise<boolean>;
+    signInBackend: (currentAddress: string) => Promise<boolean>;
 }
 
 export interface TronWeb {
