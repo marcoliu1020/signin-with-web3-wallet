@@ -1,5 +1,6 @@
 'use client'
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createContext, useContext, useEffect, useState } from 'react';
 import { WagmiProvider, useAccount, useDisconnect, useSignMessage } from 'wagmi';
 // import { watchAccount } from '@wagmi/core'
@@ -130,12 +131,16 @@ function EthereumProvider({ children }: { children: React.ReactNode }) {
     );
 }
 
+const queryClient = new QueryClient()
+
 export function EthereumContextProvider({ children }: { children: React.ReactNode }) {
     return (
-        <WagmiProvider config={config}>
-            <EthereumProvider>
-                {children}
-            </EthereumProvider>
-        </WagmiProvider>
+        <QueryClientProvider client={queryClient}>
+            <WagmiProvider config={config}>
+                <EthereumProvider>
+                    {children}
+                </EthereumProvider>
+            </WagmiProvider>
+        </QueryClientProvider>
     )
 }
