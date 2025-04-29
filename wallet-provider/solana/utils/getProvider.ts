@@ -4,7 +4,7 @@ import { PhantomProvider } from '../types';
  * Retrieves the Phantom Provider from the window object
  * @returns {PhantomProvider | undefined} a Phantom provider if one exists in the window
  */
-const getProvider = (): PhantomProvider | undefined => {
+const getProvider = (): PhantomProvider | null => {
   if ('phantom' in window) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const anyWindow: any = window;
@@ -16,6 +16,7 @@ const getProvider = (): PhantomProvider | undefined => {
   }
 
   window.open('https://phantom.app/', '_blank');
+  return null;
 };
 
 export default getProvider;
