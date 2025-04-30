@@ -19,8 +19,8 @@ function ConnectWallet() {
 
   return (
     <div>
-      <WalletOptions />
       {isConnected && <Account />}
+      <WalletOptions />
     </div>
   )
 }
