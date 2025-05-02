@@ -32,6 +32,7 @@ export function TronContextProvider({ children }: { children: React.ReactNode })
     const connect = async () => {
         try {
             if (!window.tronWeb) {
+                window.open("https://tronlink.org/", "_blank") // 打開 TronLink 下載頁面
                 throw new Error('TronLink not installed');
             }
 
